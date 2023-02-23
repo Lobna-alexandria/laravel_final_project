@@ -183,7 +183,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -208,6 +209,8 @@ return [
     'aliases' => Facade::defaultAliases()
         ->merge([
             // 'ExampleClass' => App\Example\ExampleClass::class,
+            'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+            'Image' => Intervention\Image\Facades\Image::class,
         ])
         ->toArray(),
 

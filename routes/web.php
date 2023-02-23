@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\welcomeController;
+use App\Http\Controllers\FrontSection1Controller;
 // use Illuminate\Support\Facades\Request;
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +27,23 @@ Route::group(
         ],
     ],
     function () {
-        Route::get('/', function () {
-            return view('welcome');
-        });
+        // Route::get('/', function () {
+        //     return view('welcome');
+        // });
 
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })
-            ->middleware(['auth', 'verified'])
-            ->name('dashboard');
+        Route::get('/', [welcomeController::class, 'showAll'])->name('welcome');
+        // Route::get('print/users', [OceanController::class, 'printO']);
+        // [UserProfileController::class, 'show']
+        // ->middleware(['auth', 'verified', 'GoToDash'])
+        // ->name('dashboard');
+
+        Route::middleware(['auth', 'verified', 'GoToDash'])->group(function () {
+            Route::get('/dashboard', function () {
+                return view('dashboard');
+            })->name('dashboard');
+            Route::resource('user', userController::class);
+            Route::resource('portfolio', FrontSection1Controller::class);
+        });
 
         Route::middleware('auth')->group(function () {
             Route::get('/profile', [ProfileController::class, 'edit'])->name(

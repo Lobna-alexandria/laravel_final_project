@@ -30,7 +30,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-  
+  @include('sweetalert::alert')
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -62,27 +62,30 @@
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
+        <a class=" fw-bold fs-1 text-warning nav-link bg-light rounded-circle" data-toggle="dropdown" href="#">
+          {{--  <i class="far fa-comments"></i>  --}}
+          {{App::getLocale()}}
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 
             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                {{--  <a href="#" class="dropdown-item px-4 d-flex align-items-center justify-content-center">  --}}
-                            <!-- Message Start -->
-                 <div hreflang="{{$localeCode}}" class="d-flex align-items-center justify-content-between p-3 {{App::getLocale() == $localeCode ? 'active' :''}}">
+                  <div class="d-flex align-items-center justify-content-between p-3 nav-link {{App::getLocale() == $localeCode ? 'bg-danger' :'bg-light'}}">         
+                     <!-- Message Start -->
+                 <a hreflang="{{$localeCode}}" class="dropdown-item" href="">
+                  {{--  class="{{App::getLocale() == $localeCode ? 'active' :''}} "  --}}
                   <img src="{{asset('AdmindashBoard/flags/'. $properties['name'].'.png')}}" alt="User Avatar" class="w-25 h-25 rounded-circle">
-                   {{--  <div class="media-body">  --}}
                   
+                  {{--  {{App::getLocale() == $localeCode ? 'active' :''}}  --}}
                    
-                    <h3 class="dropdown-item-title  ">
-                    <a class="px-3" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    <h3 class="dropdown-item-title ">
+                    <a class="px-3 " rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                              {{ $properties['native'] }}
                        </a>
                     </h3>
-                </div>
-                       
+                  
+                </a>
+                     </div>  
                       {{--  </div>  --}}
                       <!-- Message End -->
                <div class="dropdown-divider"></div>
@@ -168,7 +171,9 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('AdmindashBoard/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          {{-- <img src="{{asset('AdmindashBoard/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image"> --}}
+          <img src="{{ asset('uploads/users/'.Auth::user()->image)}}" class="img-circle elevation-2" alt="User Image">
+
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name}}</a>
@@ -222,22 +227,22 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Layout Options
+                All Tables
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
+              <li class="nav-item ">
+                <a href="{{route('user.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-info"></i>
+                  <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
+                <a href="{{route('portfolio.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-warning"></i>
+                  <p>My Portfolio</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -287,11 +292,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Dashboard</h1>
+              <h1 class="m-0 text-dark">@yield('page_title')</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item active">Dashboard v1</li>
               </ol>
             </div><!-- /.col -->
