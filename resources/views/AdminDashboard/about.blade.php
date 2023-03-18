@@ -38,7 +38,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="about__image">
-                                <img src="assets/img/images/about_img.png" alt="">
+                                <img src="{{asset('/img/images/about_img.png alt=""')}}">
                             </div>
                         </div>
                         <div class="col-lg-6">

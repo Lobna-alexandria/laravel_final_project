@@ -79,6 +79,22 @@
 <script src="{{asset('frontDesign/js/wow.min.js')}}"></script>
 <script src="{{asset('frontDesign/js/plugins.js')}}"></script>
 <script src="{{asset('frontDesign/js/main.js')}}"></script>
+<script>
+    window.onload = function() {
+        var data = CKEDITOR.instances.editor1.getData();
+       
+    };
+</script>
+<script>
+    window.onload = function() {
+        CKEDITOR.replace( 'editor1' );
+    };
+</script>
+<script>
+    var data = CKEDITOR.instances.editor1.getData();
+
+    // Your code to save "data", usually through Ajax.
+</script>
 </body>
 
 </html>

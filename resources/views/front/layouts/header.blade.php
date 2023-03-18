@@ -21,6 +21,17 @@
     <link rel="stylesheet" href="{{asset('frontDesign/css/default.css')}}">
     <link rel="stylesheet" href="{{asset('frontDesign/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontDesign/css/responsive.css')}}">
+    {{-- <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script> --}}
+    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+    
+    
+    
+    {{-- <style>about__icons__wrap
+
+        .btn-info{
+            background-color: #e7c8f1
+        }
+    </style> --}}
 </head>
 
 <body>
@@ -54,7 +65,7 @@
 
     <!-- preloader-start -->
     <div id="preloader">
-        <div class="rasalina-spin-box"></div>
+        <div class="rasalina-spin-box "></div>
     </div>
     <!-- preloader-end -->
 
@@ -74,17 +85,17 @@
                         <div class="menu__wrap">
                             <nav class="menu__nav">
                                 <div class="logo">
-                                    <a href="index.html" class="logo__black"><img src="{{asset('frontDesign/img/logo/logo_black.png')}}"
+                                    <a href="{{route('welcome')}}" class="logo__black"><img src="{{asset('frontDesign/img/logo/logo_black.png')}}"
                                             alt=""></a>
-                                    <a href="index.html" class="logo__white"><img src="{{asset('frontDesign/img/logo/logo_white.png')}}"
+                                    <a href="{{route('welcome')}}" class="logo__white"><img src="{{asset('frontDesign/img/logo/logo_white.png')}}"
                                             alt=""></a>
                                 </div>
                                 <div class="navbar__wrap main__menu d-none d-xl-flex">
-                                    <ul class="navigation">
-                                        <li class="active"><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="services-details.html">Services</a></li>
-                                        <li class="menu-item-has-children"><a href="#">Portfolio</a>
+                                    <ul class="navigation d-flex justify-content-between">
+                                        <li class="active"><a href="{{route('welcome')}}">Home</a></li>
+                                        <li><a href="{{route('about')}}">About</a></li>
+                                        <li><a href="{{route('servDetails')}}">Services</a></li>
+                                        {{-- <li class="menu-item-has-children"><a href="#">Portfolio</a>
                                             <ul class="sub-menu">
                                                 <li><a href="portfolio.html">Portfolio</a></li>
                                                 <li><a href="portfolio-details.html">Portfolio Details</a></li>
@@ -95,8 +106,8 @@
                                                 <li><a href="blog.html">Our News</a></li>
                                                 <li><a href="blog-details.html">News Details</a></li>
                                             </ul>
-                                        </li>
-                                        <li><a href="contact.html">contact me</a></li>
+                                        </li> --}}
+                                        <li><a href="{{route('contact')}}">contact me</a></li>
                                     </ul>
                                 </div>
                                 <div class="header__btn d-none d-md-block">

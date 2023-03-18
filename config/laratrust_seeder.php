@@ -14,16 +14,12 @@ return [
     'roles_structure' => [
         'super_admin' => [
             'users' => 'c,r,u,d',
-            'front_section1s' => 'c,r,u,d',
-            // 'profile' => 'r,u',
         ],
         'admin' => [
-            'users' => '',
-            'front_section1s' => 'c,r,u,d',
-            // 'profile' => 'r,u',
+            'users' => 'c,r,u',
         ],
         'user' => [
-            // 'profile' => 'r,u',
+            'users' => 'c,r',
         ],
     ],
 

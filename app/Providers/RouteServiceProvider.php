@@ -2,8 +2,15 @@
 
 namespace App\Providers;
 
+use image;
+use App\Models\Working;
+use App\Models\UserAbout;
+use App\Models\MultiImage;
+use App\Models\CreativeWork;
+use App\Models\Creative_Work_image;
 use Illuminate\Http\Request;
 use App\Models\FrontSection1;
+use App\Models\ServeMultiIcon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
@@ -28,6 +35,14 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         Route::model('portfolio', FrontSection1::class); // لربط الموديل باسم اراوت لانهم مش نفس الاسم
+        Route::model('Dabout', UserAbout::class);
+        Route::model('MultiImage', MultiImage::class);
+        Route::model('work', Working::class);
+        Route::model('ServeMultiIcon', ServeMultiIcon::class);
+      
+        Route::model('CreativeWork', CreativeWork::class);
+        Route::model('CreativeWorkImg', Creative_Work_image::class);
+
         $this->configureRateLimiting();
 
         $this->routes(function () {

@@ -1,4 +1,5 @@
 @extends('front.layouts.app')
+
 @section('content')
 <!-- main area -->
         <!-- banner-area -->
@@ -17,7 +18,7 @@
                             <h2 class="title wow fadeInUp" data-wow-delay=".2s">{{$AlldataP[0]->main_title}} <br>
                                </h2>
                             <p class="wow fadeInUp" data-wow-delay=".4s"> {{$AlldataP[0]->title}}</p>
-                            <a href="about.html" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s"> {{$AlldataP[0]->btn_name}}</a>
+                            <a href="{{route('about')}}" class="btn dark-purple banner__btn wow fadeInUp" data-wow-delay=".6s"> {{$AlldataP[0]->btn_name}}</a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +27,7 @@
                 <a href="#aboutSection" class="scroll__link">Scroll down</a>
             </div>
             <div class="banner__video">
-                <a href="https://www.youtube.com/watch?v=pZVdQLn_E5w" class="popup-video"><i
+                <a href="https://www.youtube.com/watch?v=pZVdQLn_E5w" class="popup-video dark-purple"><i
                         class="fas fa-play"></i></a>
 
         </section>
@@ -38,54 +39,31 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <ul class="about__icons__wrap">
-                            <li>
-                                <img class="light" src="{{asset('frontDesign/img/icons/xd_light.png')}}" alt="XD">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/xd.png')}}" alt="XD">
-                            </li>
-                            <li>
-                                <img class="light" src="{{asset('frontDesign/img/icons/skeatch_light.png')}}" alt="Skeatch">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/skeatch.png')}}" alt="Skeatch">
-                            </li>
-                            <li>
-                                <img class="light" src="{{asset('frontDesign/img/icons/illustrator_light.png')}}" alt="Illustrator">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/illustrator.png')}}" alt="Illustrator">
-                            </li>
-                            <li>
-                                <img class="light" src="{{asset('frontDesign/img/icons/hotjar_light.png')}}" alt="Hotjar">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/hotjar.png')}}" alt="Hotjar">
-                            </li>
-                            <li>
-                                <img class="light" src="{{asset('frontDesign/img/icons/invision_light.png')}}" alt="Invision">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/invision.png')}}" alt="Invision">
-                            </li>
-                            <li>
-                                <img class="light" src="{{asset('frontDesign/img/icons/photoshop_light.png')}}" alt="Photoshop">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/photoshop.png')}}" alt="Photoshop">
-                            </li>
-                            <li>
-                                <img class="light" src="{{asset('frontDesign/img/icons/figma_light.png')}}" alt="Figma">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/figma.png')}}" alt="Figma">
-                            </li>
-                        </ul>
+                           
+                           @foreach ( $MultiImg as $img)
+                           <li>
+                            <img style="object-fit:contain" src="{{asset('uploads/AboutMe/'. $img->image)}}" alt="XD" width="200" height="100">
+                            {{-- <img class="dark" src="{{asset('frontDesign/img/icons/xd.png')}}" alt="XD"> --}}
+                        </li>
+                           @endforeach 
+                           
+                    </ul>
                     </div>
                     <div class="col-lg-6">
                         <div class="about__content">
                             <div class="section__title">
                                 <span class="sub-title">01 - About me</span>
-                                <h2 class="title">I have transform your ideas into remarkable digital products</h2>
+                                <h2 class="title">{{$AllAbt[0]->main_title}}</h2>
                             </div>
                             <div class="about__exp">
                                 <div class="about__exp__icon">
                                     <img src="{{asset('frontDesign/img/icons/about_icon.png')}}" alt="">
                                 </div>
                                 <div class="about__exp__content">
-                                    <p>20+ Years Experience In this game, Means <br> Product Designing</p>
+                                    <p>{{$AllAbt[0]->title}}</p>
                                 </div>
                             </div>
-                            <p class="desc">I love to work in User Experience & User Interface designing. Because I love
-                                to solve the design problem and find easy and better solutions to solve it. I always try
-                                my best to make good user interface with the best user experience. I have been working
-                                as a UX Designer</p>
+                            <p class="desc">{{$AllAbt[0]->desc}}</p>
                             <a href="about.html" class="btn">Download my resume</a>
                         </div>
                     </div>
@@ -111,31 +89,38 @@
                     </div>
                 </div>
                 <div class="row gx-0 services__active">
+                    @foreach ($Allserv as $serv)
+                        
+                   
                     <div class="col-xl-3">
                         <div class="services__item">
                             <div class="services__thumb">
-                                <a href="services-details.html"><img src="{{asset('frontDesign/img/images/services_img01.jpg')}}"
-                                        alt=""></a>
+                                <a href=" {{route('servDetails',['servDetails' => $serv->id ])}} "><img src="{{asset('uploads/services/'.$serv->image)}}"
+                                        alt="img" height="200"></a>
                             </div>
                             <div class="services__content">
                                 <div class="services__icon">
                                     <img class="light" src="{{asset('frontDesign/img/icons/services_light_icon01.png')}}" alt="">
                                     <img class="dark" src="{{asset('frontDesign/img/icons/services_icon01.png')}}" alt="">
                                 </div>
-                                <h3 class="title"><a href="services-details.html">Business Strategy</a></h3>
-                                <p>Strategy is a forward-looking plan for your brand’s behavior. Strategy is a
-                                    forward-looking plan.</p>
-                                <ul class="services__list">
+                                <h3 class="title"><a href="services-details.html">{{$serv->name}}</a></h3>
+                                <p>{{$serv->desc}}</p>
+                                {{-- <ul class="services__list">
                                     <li>Research & Data</li>
                                     <li>Branding & Positioning</li>
                                     <li>Business Consulting</li>
                                     <li>Go To Market</li>
-                                </ul>
-                                <a href="services-details.html" class="btn border-btn">Read more</a>
+                                </ul> --}}
+                                <div class="my-3"> {!! html_entity_decode($serv->editor1) !!}</div>
+                                {{-- <a href="{{route('servDetails')}}" class="btn border-btn">Read more</a> --}}
+                               
+                                <a href=" {{route('servDetails',['servDetails' => $serv->id ])}}" class="btn border-btn">Read more</a>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3">
+                    @endforeach
+                    {{-- <div class="col-xl-3">
                         <div class="services__item">
                             <div class="services__thumb">
                                 <a href="services-details.html"><img src="{{asset('frontDesign/img/images/services_img02.jpg')}}"
@@ -230,7 +215,7 @@
                                 <a href="services-details.html" class="btn border-btn">Read more</a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -248,20 +233,23 @@
                     </div>
                 </div>
                 <div class="row work__process__wrap">
+                    @foreach ($Allwork as $work)
                     <div class="col">
                         <div class="work__process__item">
-                            <span class="work__process_step">Step - 01</span>
+                            <span class="work__process_step">Step -0{{$work->id}}</span>
                             <div class="work__process__icon">
-                                <img class="light" src="{{asset('frontDesign/img/icons/wp_light_icon01.png')}}" alt="">
-                                <img class="dark" src="{{asset('frontDesign/img/icons/wp_icon01.png')}}" alt="">
+                                <img class="light image-fluid" src="{{asset('uploads/working/' . $work->icon)}}" height="200"  style="object-fit: contain" alt="">
+                               
                             </div>
                             <div class="work__process__content">
-                                <h4 class="title">Discover</h4>
-                                <p>Initial ideas or inspiration & Establishment of user needs.</p>
+                                <h4 class="title"> {{$work->title}}</h4>
+                                <p> {{$work->desc}}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
+                    </div> 
+                    @endforeach
+                   
+                       {{-- <div class="col">
                         <div class="work__process__item">
                             <span class="work__process_step">Step - 02</span>
                             <div class="work__process__icon">
@@ -299,7 +287,7 @@
                                 <p>Process outcomes finalised & Implemented</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -323,12 +311,15 @@
                                 <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all"
                                     type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="website-tab" data-bs-toggle="tab" data-bs-target="#website"
-                                    type="button" role="tab" aria-controls="website"
-                                    aria-selected="false">website</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
+                           @foreach ($creative as $crtv)
+                                <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="{{$crtv->name}}.-tab" data-bs-toggle="tab" data-bs-target="#{{$crtv->name}}"
+                                    type="button" role="tab" aria-controls="{{$crtv->name}}"
+                                    aria-selected="false">{{$crtv->name}}</button>
+                                 </li>
+                           @endforeach
+                           
+                            {{-- <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="apps-tab" data-bs-toggle="tab" data-bs-target="#apps"
                                     type="button" role="tab" aria-controls="apps" aria-selected="false">mobile
                                     apps</button>
@@ -352,7 +343,7 @@
                                 <button class="nav-link" id="graphic-tab" data-bs-toggle="tab" data-bs-target="#graphic"
                                     type="button" role="tab" aria-controls="graphic" aria-selected="false">Graphic
                                     Design</button>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>
@@ -363,9 +354,10 @@
                         <div class="row gx-0 justify-content-center">
                             <div class="col">
                                 <div class="portfolio__active">
-                                    <div class="portfolio__item">
+                                  @foreach ($cretWorkImg as $wImage)
+                                       <div class="portfolio__item">
                                         <div class="portfolio__thumb">
-                                            <img src="{{asset('frontDesign/img/portfolio/portfolio_img01.jpg')}}" alt="">
+                                            <img src="{{asset('uploads/crimages/'.$wImage->image )}}" alt="" width="1020" height="520" style="object-fit:fill">
                                         </div>
                                         <div class="portfolio__overlay__content">
                                             <span>Apps Design</span>
@@ -374,17 +366,14 @@
                                             <a href="portfolio-details.html" class="link">Case Study</a>
                                         </div>
                                     </div>
-                                    <div class="portfolio__item">
-                                        <div class="portfolio__thumb">
-                                            <img src="{{asset('frontDesign/img/portfolio/portfolio_img02.jpg')}}" alt="">
-                                        </div>
-                                        <div class="portfolio__overlay__content">
-                                            <span>Web Design</span>
-                                            <h4 class="title"><a href="portfolio-details.html">Banking Management
-                                                    System</a></h4>
-                                            <a href="portfolio-details.html" class="link">Case Study</a>
-                                        </div>
-                                    </div>
+
+                                    
+                                  @endforeach
+                                  {{-- $creative->CreativeWorkimages->image --}}
+
+
+                                   
+
                                     <div class="portfolio__item">
                                         <div class="portfolio__thumb">
                                             <img src="{{asset('frontDesign/img/portfolio/portfolio_img03.jpg')}}" alt="">
@@ -396,7 +385,7 @@
                                             <a href="portfolio-details.html" class="link">Case Study</a>
                                         </div>
                                     </div>
-                                    <div class="portfolio__item">
+                                    {{-- <div class="portfolio__item">
                                         <div class="portfolio__thumb">
                                             <img src="{{asset('frontDesign/img/portfolio/portfolio_img04.jpg')}}" alt="">
                                         </div>
@@ -439,17 +428,24 @@
                                                     System</a></h4>
                                             <a href="portfolio-details.html" class="link">Case Study</a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                @foreach ($creative as $crtv )
+                    
+               
                 <div class="tab-pane" id="website" role="tabpanel" aria-labelledby="website-tab">
                     <div class="container">
                         <div class="row gx-0 justify-content-center">
                             <div class="col">
                                 <div class="portfolio__active">
+                                    {{-- @foreach ( as )
+                                        
+                                    @endforeach --}}
                                     <div class="portfolio__item">
                                         <div class="portfolio__thumb">
                                             <img src="{{asset('frontDesign/img/portfolio/portfolio_img07.jpg')}}" alt="">
@@ -461,7 +457,8 @@
                                             <a href="portfolio-details.html" class="link">Case Study</a>
                                         </div>
                                     </div>
-                                    <div class="portfolio__item">
+
+                                    {{-- <div class="portfolio__item">
                                         <div class="portfolio__thumb">
                                             <img src="{{asset('frontDesign/img/portfolio/portfolio_img06.jpg')}}" alt="">
                                         </div>
@@ -526,13 +523,15 @@
                                                     System</a></h4>
                                             <a href="portfolio-details.html" class="link">Case Study</a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="apps" role="tabpanel" aria-labelledby="apps-tab">
+                @endforeach
+
+                {{-- <div class="tab-pane" id="apps" role="tabpanel" aria-labelledby="apps-tab">
                     <div class="container">
                         <div class="row gx-0 justify-content-center">
                             <div class="col">
@@ -966,7 +965,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
         <!-- portfolio-area-end -->
@@ -1174,3 +1173,8 @@
 
         @endsection
         @section('page_title','LOBNA')
+        <script>
+            window.onload = function() {
+                ckEditor("editor1").replace();
+            };
+        </script>

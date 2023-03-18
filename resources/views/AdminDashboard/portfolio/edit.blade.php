@@ -77,7 +77,7 @@
                 placeholder="Button Caption"
                 name="video">
 
-                @error('btn_name')
+                @error('video')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 

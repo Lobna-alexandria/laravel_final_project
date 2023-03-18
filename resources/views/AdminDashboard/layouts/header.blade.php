@@ -26,6 +26,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  
+  <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -200,18 +202,7 @@
                   <p>{{__('Dashboard')}} v1</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{__('Dashboard')}} v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{__('Dashboard')}} v3</p>
-                </a>
-              </li>
+             
             </ul>
           </li>
           <li class="nav-item">
@@ -224,7 +215,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 All Tables
@@ -246,36 +237,99 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
+                <a href="{{route('Dabout.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-success"></i>
+                  <p>About</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
+                <a href="{{route('skill.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-danger"></i>
+                  <p>Skills</p>
                 </a>
               </li>
+              {{-- <li class="nav-item nav nav-treeview">
+                <a href="{{route('service.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-warning"></i>
+                  <p>Services</p>
+                </a>
+                <li class="nav-item">
+                  <a href="{{route('service.index')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon text-warning"></i>
+                    <p>MultiMedia Icons</p>
+                  </a>
+                </li>
+              </li> --}}
+             
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    All Services
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right">2</span>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item ">
+                    <a href="{{route('service.index')}}" class="nav-link">
+                      <i class="ml-3 far fa-circle nav-icon text-info"></i>
+                      <p>Services</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('ServeMultiIcon.index')}}" class="nav-link">
+                      <i class="ml-3 far fa-circle nav-icon text-warning"></i>
+                      <p>Social Icons</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+
               <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
+                <a href="{{route('work.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-success"></i>
+                  <p>Working Process</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
+              {{-- <li class="nav-item">
+                <a href="{{route('CreativeWork.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon text-warning"></i>
+                  <p>Creative Work</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
+              </li> --}}
+
+
+              {{--  --}}
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    All Creative Tasks
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right">2</span>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item ">
+                    <a href="{{route('CreativeWork.index')}}" class="nav-link">
+                      <i class="ml-3 far fa-circle nav-icon text-info"></i>
+                      <p>CreativeWork</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('CreativeWorkImg.index')}}" class="nav-link">
+                      <i class="ml-3 far fa-circle nav-icon text-warning"></i>
+                      <p>CreativeWork Images</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
+
             </ul>
+           
           </li>
 
         </ul>

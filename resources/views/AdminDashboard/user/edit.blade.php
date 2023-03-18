@@ -47,23 +47,23 @@
                     </div>
 
                 </div>
-                
-                    <label>Email address</label>
-                    <input type="email" class="form-control" value="{{ $user->email }}" placeholder="Enter email"
-                        name="email">
 
-                    @error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                <label>Email address</label>
+                <input type="email" class="form-control" value="{{ $user->email }}" placeholder="Enter email"
+                    name="email">
 
-                    <label>Password</label>
-                    <input type="password" class="form-control" value="{{ $user->password }}" placeholder="Password"
-                        name="password">
+                @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
-                    @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-               
+                <label>Password</label>
+                <input type="password" class="form-control" value="{{ $user->password }}" placeholder="Password"
+                    name="password">
+
+                @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
                 {{-- attach role --}}
                 <div class="d-flex col-12  justify-contents-between p-3">
                     <label class="px-2">Role : </label>

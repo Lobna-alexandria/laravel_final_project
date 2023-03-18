@@ -1,109 +1,7 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Rasalina - Personal Portfolio HTML Template</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('front.layouts.app')
 
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-        <!-- Place favicon.ico in the root directory -->
-
-		<!-- CSS here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/animate.min.css">
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/css/slick.css">
-        <link rel="stylesheet" href="assets/css/default.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-    </head>
-    <body>
-
-        <!-- preloader-start -->
-        <div id="preloader">
-            <div class="rasalina-spin-box"></div>
-        </div>
-        <!-- preloader-end -->
-
-		<!-- Scroll-top -->
-        <button class="scroll-top scroll-to-target" data-target="html">
-            <i class="fas fa-angle-up"></i>
-        </button>
-        <!-- Scroll-top-end-->
-
-        <!-- header-area -->
-        <header>
-            <div id="sticky-header" class="menu__area transparent-header">
-                <div class="container custom-container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mobile__nav__toggler"><i class="fas fa-bars"></i></div>
-                            <div class="menu__wrap">
-                                <nav class="menu__nav">
-                                    <div class="logo">
-                                        <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png" alt=""></a>
-                                        <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png" alt=""></a>
-                                    </div>
-                                    <div class="navbar__wrap main__menu d-none d-xl-flex">
-                                        <ul class="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li class="active"><a href="services-details.html">Services</a></li>
-                                            <li class="menu-item-has-children"><a href="#">Portfolio</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="portfolio.html">Portfolio</a></li>
-                                                    <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="#">Our Blog</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog.html">Our News</a></li>
-                                                    <li><a href="blog-details.html">News Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">contact me</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="header__btn d-none d-md-block">
-                                        <a href="contact.html" class="btn">Contact me</a>
-                                    </div>
-                                </nav>
-                            </div>
-                            <!-- Mobile Menu  -->
-                            <div class="mobile__menu">
-                                <nav class="menu__box">
-                                    <div class="close__btn"><i class="fal fa-times"></i></div>
-                                    <div class="nav-logo">
-                                        <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png" alt=""></a>
-                                        <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png" alt=""></a>
-                                    </div>
-                                    <div class="menu__outer">
-                                        <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-                                    </div>
-                                    <div class="social-links">
-                                        <ul class="clearfix">
-                                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-youtube"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </nav>
-                            </div>
-                            <div class="menu__backdrop"></div>
-                            <!-- End Mobile Menu -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- header-area-end -->
-
-        <!-- main-area -->
+@section('content')
+<!-- main-area -->
         <main>
 
             <!-- breadcrumb-area -->
@@ -115,7 +13,7 @@
                                 <h2 class="title">Services Details</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('welcome')}}">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Details</li>
                                     </ol>
                                 </nav>
@@ -125,12 +23,11 @@
                 </div>
                 <div class="breadcrumb__wrap__icon">
                     <ul>
-                        <li><img src="assets/img/icons/breadcrumb_icon01.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon02.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon03.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon04.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon05.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon06.png" alt=""></li>
+                        @foreach ($AllImg as $img)
+                        <li><img src="{{asset('uploads/AboutMe/'.$img->image)}}" alt=""></li>
+
+                        @endforeach
+                        
                     </ul>
                 </div>
             </section>
@@ -142,10 +39,14 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="services__details__thumb">
-                                <img src="assets/img/images/services_details01.jpg" alt="">
+                             
+                                <img src="{{asset('uploads/services/'. $AllServs[0]->image)}}" width="800" style="object-fit: contain" alt="">
+                             
                             </div>
                             <div class="services__details__content">
-                                <h2 class="title">We Solve Business Strategy Problem</h2>
+                               
+                                <h2 class="title">{{$AllServs[0]->name}}</h2>
+                               
                                 <p>Definition: Business strategy can be understood as the course of action or set of decisions which assist the
                                 entrepreneurs in achieving specific business objectives.</p>
                                 <p>It is nothing but a master plan that the management of a company implements to secure a competitive position in the market, carry on its operations, please customers and achieve the desired ends of the business.</p>
@@ -165,10 +66,10 @@
                                 <div class="services__details__img">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <img src="assets/img/images/services_details02.jpg" alt="">
+                                            <img src="{{asset('uploads/services/serv4.jpeg')}}" alt="">
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="assets/img/images/services_details03.jpg" alt="">
+                                            <img src="{{asset('uploads/services/serv5.jpeg')}}" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -191,18 +92,17 @@
                                 <div class="widget">
                                     <h5 class="title">Contact Information</h5>
                                     <ul class="sidebar__contact__info">
-                                        <li><span>Address :</span> 8638 Amarica Stranfod, <br> Mailbon Star</li>
-                                        <li><span>Mail :</span> yourmail@gmail.com</li>
+                                        <li><span>Address :</span> {{$AllAbout[0]->address}} </li>
+                                        <li><span>Mail :</span>  {{$AllAbout[0]->mail}}</li>
                                         <li><span>Phone :</span> +7464 0187 3535 645</li>
                                         <li><span>Fax id :</span> +9 659459 49594</li>
                                     </ul>
                                     <ul class="sidebar__contact__social">
-                                        <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                        @foreach ($servIcons as $icon)
+                                      <li><a href="{{$icon->linkname}}" blank><img src="{{asset('uploads/ServMultiIcons/'.$icon->image)}}" alt=""></a></li>
+
+                                        @endforeach
+                                       
                                     </ul>
                                 </div>
                             </aside>
@@ -248,83 +148,22 @@
         </main>
         <!-- main-area-end -->
 
-
-
-        <!-- Footer-area -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-lg-4">
-                        <div class="footer__widget">
-                            <div class="fw-title">
-                                <h5 class="sub-title">Contact us</h5>
-                                <h4 class="title">+81383 766 284</h4>
-                            </div>
-                            <div class="footer__widget__text">
-                                <p>There are many variations of passages of lorem ipsum
-                                available but the majority have suffered alteration
-                                in some form is also here.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="footer__widget">
-                            <div class="fw-title">
-                                <h5 class="sub-title">my address</h5>
-                                <h4 class="title">AUSTRALIA</h4>
-                            </div>
-                            <div class="footer__widget__address">
-                                <p>Level 13, 2 Elizabeth Steereyt set <br> Melbourne, Victoria 3000</p>
-                                <a href="mailto:noreply@envato.com" class="mail">noreply@envato.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="footer__widget">
-                            <div class="fw-title">
-                                <h5 class="sub-title">Follow me</h5>
-                                <h4 class="title">socially connect</h4>
-                            </div>
-                            <div class="footer__widget__social">
-                                <p>Lorem ipsum dolor sit amet enim. <br> Etiam ullamcorper.</p>
-                                <ul class="footer__social__list">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="copyright__wrap">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="copyright__text text-center">
-                                <p>Copyright @ Theme_Pure 2021 All right Reserved</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Footer-area-end -->
-
-
-
+@endsection
+@section('page_title','ABOUT')
+     
+@section('page_js')
 
 		<!-- JS here -->
-        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="assets/js/element-in-view.js"></script>
-        <script src="assets/js/slick.min.js"></script>
-        <script src="assets/js/ajax-form.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
-    </body>
-</html>
+        <script src="{{asset('frontDesign/js/vendor/jquery-3.6.0.min.js')}}"></script>
+        <script src="{{asset('frontDesign/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('frontDesign/js/isotope.pkgd.min.js')}}"></script>
+        <script src="{{asset('frontDesign/js/imagesloaded.pkgd.min.js')}}"></script>
+        <script src="{{asset('frontDesign/js/jquery.magnific-popup.min.js')}}"></script>
+        <script src="{{asset('frontDesign/js/element-in-view.js')}}"></script>
+        <script src="{{asset('frontDesign/js/slick.min.js')}}"></script>
+        <script src="{{asset('frontDesign/js/ajax-form.js')}}"></script>
+        <script src="{{asset('frontDesign/js/wow.min.js')}}"></script>
+        <script src="{{asset('frontDesign/js/plugins.js')}}"></script>
+        <script src="{{asset('frontDesign/js/main.js')}}"></script>
+ @endsection
+   
